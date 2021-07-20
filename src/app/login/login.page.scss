@@ -1,0 +1,80 @@
+ion-content {
+    --ion-background-color: #A7FF83;
+}
+
+.white-background {
+    --ion-background-color: #ffffff;
+}
+
+.back-container {
+    background-color: white;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media only screen and (min-width: 1300px) {
+    .back-container {
+        margin-top: 16px;
+        width: 30%;
+        max-width: 30%;
+        height: 50%;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .back-container {
+        margin-top: 16px;
+        width: 50%;
+        max-width: 50%;
+        height: 50%;
+    }
+}
+
+.profile-background {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    top: 0;
+    border-radius: 20px 20px 0 0;
+}
+
+.profile-picture-container {
+    height: 40%;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-picture {
+    width: 30%;
+    border-radius: 100px;
+    position: absolute;
+    margin: auto;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.change-photo-button {
+    position: absolute;
+    top: 63%;
+    left: 57%
+}
+
+.grid-margin {
+    margin-top: 110px;
+}
+
+#file-input {
+    position: absolute;
+    opacity: 0;
+}
+
+a {
+    font-size: small;
+    color: var(--ion-color-dark);
+    text-decoration: none;
+  }
+  
+  

@@ -1,0 +1,48 @@
+<ion-content>
+    <div class="back-container">
+        <ion-grid class="grid-margin">
+            <form [formGroup]="loginForm" (ngSubmit)="login($event)">
+            <ion-row>
+                <ion-col size-xl="8" offset-xl="2">
+                    <h1 style="text-align: center; margin-top: 66px;">Login</h1>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size-xl="8" offset-xl="2">
+                    <ion-item class="white-background">
+                        <ion-label position="floating">E-Mail</ion-label>
+                        <ion-input type="email" formControlName="email" placeholder="your@email.com"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size-xl="8" offset-xl="2">
+                    <ion-item class="white-background">
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input type="Password" formControlName="password" placeholder="your password"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size-xl="8" offset-xl="2">
+                    <ion-button expand="block" color="purple" [disabled]="!loginForm.valid" type="submit">
+                        Log In
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-xl="8" offset-xl="2">
+                    <a class="ion-float-right" fill="clear" size="small" color="black"
+                    [routerLink]="['/register']">Keinen account? Registrieren</a>
+        
+                </ion-col>
+            </ion-row>
+
+            </form>
+        </ion-grid>
+    </div>
+
+</ion-content>

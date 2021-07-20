@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="">
+            <ion-button (click)="onClick()">
+                <ion-icon slot="start" name="add"></ion-icon>
+                Click me
+            </ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="end" [hidden]="!authService.isAuthorized">
+            <ion-button (click)="popclick($event)">
+                {{ name }}
+                <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="end" [hidden]="authService.isAuthorized">
+            <ion-button (click)="goToLogin()">
+                Login
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="back-container">
+        <div class="profile-picture-container">
+            <img class="profile-picture" [src]="selectedFile == null ? 'http://localhost:3000/' + picture : selectedFileURL">
+            <ion-fab-button (click)="f.click()" color="purple" size="large" class="change-photo-button"><ion-icon color="white" name="camera-reverse-outline"></ion-icon></ion-fab-button>
+        </div>
+        <img src="assets/profile.png" class="profile-background" />
+        <ion-grid class="grid-margin">
+            <form [formGroup]="personalInformationForm" (ngSubmit)="saveData($event)">
+                <input class="ion-hide" #f type="file" (change)="onFileSelected($event)" id="file-input"
+                accept="image/png, image/jpeg">
+                <ion-row>
+                    <ion-col size-xl="8" offset-xl="2">
+                        <ion-item class="white-background">
+                            <ion-label position="floating">Vorname</ion-label>
+                            <ion-input placeholder="Max" formControlName="firstname"></ion-input>
+                          </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size-xl="8" offset-xl="2">
+                        <ion-item class="white-background">
+                            <ion-label position="floating">Nachname</ion-label>
+                            <ion-input placeholder="Mustermann" formControlName="lastname"></ion-input>
+                          </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size-xl="8" offset-xl="2">
+                        <ion-item class="white-background">
+                            <ion-label position="floating">E-Mail</ion-label>
+                            <ion-input placeholder="info@ionic.at" formControlName="email"></ion-input>
+                          </ion-item>
+                    </ion-col>
+                </ion-row>
+                
+                <ion-row>
+                    <ion-col size-xl="8" offset-xl="2">
+                        <ion-button expand="block" color="purple" [disabled]="!personalInformationForm.valid" type="submit">
+                            Speichern
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+
+            </form>
+            </ion-grid>
+    </div>
+
+</ion-content>
