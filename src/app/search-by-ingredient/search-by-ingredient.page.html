@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="">
+      <ion-button (click)="goToStart()">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+        Startseite
+      </ion-button>
+      <ion-button (click)="goToName()">
+        <ion-icon slot="start" name="fast-food-outline"></ion-icon>
+        Nach Name suchen
+      </ion-button>
+      <ion-button (click)="goToIng()">
+        <ion-icon slot="start" name="pizza-outline"></ion-icon>
+        Nach Zutat suchen
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" [hidden]="!authService.isAuthorized">
+      <ion-button (click)="popclick($event)">
+        {{ name }}
+        <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" [hidden]="authService.isAuthorized">
+      <ion-button (click)="goToLogin()">
+        Login
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="back-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-searchbar class="white-background" (ionChange)="getRecipes($event)"></ion-searchbar>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let recipe of recipes">
+        <ion-col>
+          <ion-card class="white-background">
+            <ion-card-header>
+              
+              <img [src]="'http://localhost:3000/' + recipe.picturePath" style="width: 100%;"/>
+              <ion-card-subtitle (click)="goToCreatorRecipes(recipe.creatorId._id)" style="cursor: pointer;"> {{ recipe.creatorId.firstName }} {{ recipe.creatorId.lastName}} </ion-card-subtitle>
+              <ion-card-title>{{ recipe.name }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item lines="none">
+                <ion-label>{{ recipe.duration }}</ion-label>
+                <ion-button slot="end" color="purple">
+                  Kochen
+                </ion-button>
+              </ion-item>
+              
+            </ion-card-content>
+          </ion-card>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
