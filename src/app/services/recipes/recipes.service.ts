@@ -16,8 +16,16 @@ export class RecipesService {
     return this.http.post(this.baseURL + "find-by-name", { name: name });
   }
 
+  public getRecipesByIngredients(ingredients: any): Observable<any> {
+    return this.http.post(this.baseURL + "find-by-ingredients", { ingredients: ingredients });
+  }
+
   public getRecipesOfUser(id: string): Observable<any> {
     return this.http.get(this.baseURL + "get-user-recipes/" + id);
+  }
+
+  public getRecipeById(id: string): Observable<any> {
+    return this.http.get(this.baseURL + id);
   }
 
 }

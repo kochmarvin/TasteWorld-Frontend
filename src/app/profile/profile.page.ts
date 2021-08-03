@@ -55,32 +55,36 @@ export class ProfilePage implements OnInit {
 		return await popover.present();
 	}
 
-	goToLogin() {
-		this.router.navigate(['/login']);
-	}
-
+	
 	saveData(value: any) {
 		this.profileService.updatePersonalInformationData(
 			this.personalInformationForm.controls.firstname.value,
 			this.personalInformationForm.controls.lastname.value,
 			this.personalInformationForm.controls.email.value,
 			this.selectedFile
-		).pipe().subscribe(async result => {
-			if (!result.error) {
-				const toast = await this.toastController.create({
-					message: result.data.message,
-					duration: 2000
-				});
-				toast.present();
-			} else {
-				const toast = await this.toastController.create({
-					message: result.error.error_message,
-					duration: 2000
-				});
-				toast.present();
-			}
-		});
+			).pipe().subscribe(async result => {
+				if (!result.error) {
+					const toast = await this.toastController.create({
+						message: result.data.message,
+						duration: 2000
+					});
+					toast.present();
+				} else {
+					const toast = await this.toastController.create({
+						message: result.error.error_message,
+						duration: 2000
+					});
+					toast.present();
+				}
+			});
+		}
+		
+	goToLogin() {
+		this.router.navigate(['/login']);
 	}
-
+	
+	goToPage(page: string) {
+		this.router.navigate([''+ page + '']);
+	}
 
 }

@@ -33,44 +33,6 @@
 <ion-content>
   <div class="back-container">
     <ion-grid>
-      <ion-row>
-        <ion-col size="5">
-          <ion-item class="white-background">
-            <ion-label position="floating">Zutat</ion-label>
-            <ion-input [(ngModel)]="ing"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col size="5">
-          <ion-item class="white-background">
-            <ion-label position="floating">Anzahl</ion-label>
-            <ion-input type="number" [(ngModel)]="amount"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col size="2">
-            <ion-button (click)="addItem()" expand="block" fill="clear" shape="round" style="margin-top: 15%;">
-              <ion-icon name="add-outline" color="success"></ion-icon>
-            </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-list *ngFor="let ings of ingredients; let i = index" class="white-background">
-            <ion-item >
-              <ion-label>{{ ings.name }}, {{ ings. amount }} </ion-label>
-              <ion-button slot="end" fill="clear" (click)="remove(i)">
-                <ion-icon name="trash-outline" color="danger"></ion-icon>
-              </ion-button>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="block" (click)="search()">
-            Suchen
-          </ion-button>
-        </ion-col>
-      </ion-row>
       <ion-row *ngFor="let recipe of recipes">
         <ion-col>
           <ion-card class="white-background">
@@ -78,17 +40,22 @@
               
               <img [src]="'http://localhost:3000/' + recipe.picturePath" style="width: 100%;"/>
               <ion-card-subtitle (click)="goToCreatorRecipes(recipe.creatorId._id)" style="cursor: pointer;"> {{ recipe.creatorId.firstName }} {{ recipe.creatorId.lastName}} </ion-card-subtitle>
-              <ion-card-title>{{ recipe.name }} </ion-card-title>
+              <ion-card-title>{{ recipe.name }}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
               <ion-item lines="none">
-                <ion-label>{{ recipe.percentage }}% / 100%</ion-label>
-                <ion-button slot="end" color="purple" (click)="addToCart(recipe.missing)">Fehlende speichern</ion-button>
+                <ion-label>{{ recipe.duration }}</ion-label>
+                <ion-button slot="end" color="purple" (click)="goToPage('recipe/' + recipe._id)">
+                  Kochen
+                </ion-button>
               </ion-item>
+              
             </ion-card-content>
           </ion-card>
+          
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
+
 </ion-content>

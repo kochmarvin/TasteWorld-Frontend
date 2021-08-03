@@ -25,6 +25,18 @@ const routes: Routes = [
     path: 'search-by-ingredient',
     loadChildren: () => import('./search-by-ingredient/search-by-ingredient.module').then( m => m.SearchByIngredientPageModule)
   },
+  {
+    path: 'search-by-name',
+    loadChildren: () => import('./search-by-name/search-by-name.module').then( m => m.SearchByNamePageModule)
+  },
+  {
+    path: 'recipe/:id',
+    loadChildren: () => import('./recipe/recipe.module').then( m => m.RecipePageModule)
+  },
+  {
+    path: 'user-recipes/:id',
+    loadChildren: () => import('./user-recipes/user-recipes.module').then( m => m.UserRecipesPageModule)
+  },
 ];
 
 @NgModule({
