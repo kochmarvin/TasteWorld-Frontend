@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, PopoverController } from '@ionic/angular';
+import { AuthService } from '../services/authentication/auth.service';
 import { ProfileService } from '../services/profile/profile.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class UserPopOverComponent implements OnInit {
   id = '';
 
   constructor(public popOverController: PopoverController, public router: Router,
-    private nav: NavController, public profileService: ProfileService ) { }
+    private nav: NavController, public profileService: ProfileService, public authService: AuthService) { }
 
   ngOnInit() {
     this.profileService.getProfileData().pipe().subscribe(result => {
@@ -32,6 +33,13 @@ export class UserPopOverComponent implements OnInit {
 
   myRecipes() {
     this.router.navigate(['user-recipes/' + this.id]);
+    this.popOverController.dismiss();
+  }
+
+  logout() {
+    localStorage.removeItem('id_token');
+    this.authService.isAuthorized = false;
+    this.router.navigate(['search-by-name']);
     this.popOverController.dismiss();
   }
 
