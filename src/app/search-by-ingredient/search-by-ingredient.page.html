@@ -49,10 +49,11 @@
               <ion-card-title>{{ recipe.name }} </ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <ion-item lines="none">
-                <ion-label>{{ recipe.percentage }}% / 100%</ion-label>
-                <ion-button slot="end" color="purple" (click)="addToCart(recipe.missing)">Fehlende speichern</ion-button>
-              </ion-item>
+              <!-- <ion-item lines="none"> -->
+                <ion-label>{{ recipe.percentage }}% der Zutaten</ion-label><br>
+                <ion-progress-bar [value]="recipe.percentage / 100"></ion-progress-bar><br>
+                <ion-button expand="block" color="purple" (click)="addToCart(recipe.missing)">Fehlende speichern</ion-button>
+              <!-- </ion-item> -->
             </ion-card-content>
           </ion-card>
         </ion-col>

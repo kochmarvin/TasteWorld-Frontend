@@ -64,4 +64,8 @@ export class SearchByIngredientPage implements OnInit {
             }
         });
     }
+
+    goToCreatorRecipes(id: string) {
+        this.router.navigate(['/user-recipes/' + id]);
+    }
 }

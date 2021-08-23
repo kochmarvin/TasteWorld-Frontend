@@ -16,8 +16,9 @@ export class AppComponent {
 
     constructor(private router: Router, private popoverController: PopoverController, private profileService: ProfileService, public authService: AuthService) {
         profileService.getProfileData().pipe().subscribe(result => {
-            console.log(result.data.data);
-            this.name = result.data.data.firstName + ' ' + result.data.data.lastName;
+            if(result.data) {
+                this.name = result.data.data.firstName + ' ' + result.data.data.lastName;
+            }
         });
     }
 
