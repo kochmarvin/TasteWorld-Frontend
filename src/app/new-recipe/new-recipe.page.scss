@@ -1,0 +1,30 @@
+ion-content {
+    --ion-background-color: #a7ff83;
+}
+
+.white-background {
+    --ion-background-color: #ffffff;
+}
+
+.back-container {
+    background-color: white;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media only screen and (min-width: 1300px) {
+    .back-container {
+        margin-top: 100px;
+        width: 30%;
+        max-width: 30%;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .back-container {
+        margin-top: 100px;
+        width: 50%;
+        max-width: 50%;
+    }
+}

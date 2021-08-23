@@ -1,9 +1,85 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>newRecipe</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="back-container">
+    <ion-grid>
+      <form [formGroup]="recipeForm" (ngSubmit)="create($event)">
+        <ion-row>
+          <ion-col>
+              <ion-button expand="block" color="purple" [disabled]="!recipeForm.valid" type="submit">
+                Erstellen
+              </ion-button>
+          </ion-col>
+        </ion-row>
 
+        <ion-row>
+          <ion-col>
+            <ion-item class="white-background">
+              <ion-input type="text" formControlName="name" placeholder="Mein Rezept"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item class="white-background">
+              <ion-label position="floating">Zubereitung</ion-label>
+              <ion-textarea rows="15" cols="20" formControlName="preperation" placeholder="Die Zubereitung des Gerichtes"></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item class="white-background">
+              <ion-label position="floating">Zubereitungsdauer</ion-label>
+              <ion-input type="text" formControlName="duration" placeholder="10min"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item class="white-background">
+              <ion-label position="floating">Personen</ion-label>
+              <ion-input type="number" formControlName="persons" placeholder="1"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        
+      </form>
+
+        <ion-row>
+          <ion-col size="5">
+            <ion-item class="white-background">
+              <ion-label position="floating">Zutat</ion-label>
+              <ion-input [(ngModel)]="ing"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="5">
+            <ion-item class="white-background">
+              <ion-label position="floating">Anzahl</ion-label>
+              <ion-input type="number" [(ngModel)]="amount"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="addItem()" expand="block" fill="clear" shape="round" style="margin-top: 15%;">
+              <ion-icon name="add-outline" color="success"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-list *ngFor="let ings of ingredients; let i = index" class="white-background">
+              <ion-item>
+                <ion-label>{{ ings.name }}, {{ ings. amount }} </ion-label>
+                <ion-button slot="end" fill="clear" (click)="remove(i)">
+                  <ion-icon name="trash-outline" color="danger"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>       
+    </ion-grid>
+  </div>
 </ion-content>

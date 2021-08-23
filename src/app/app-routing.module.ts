@@ -44,7 +44,8 @@ const routes: Routes = [
   },
   {
     path: 'new-recipe',
-    loadChildren: () => import('./new-recipe/new-recipe.module').then( m => m.NewRecipePageModule)
+    loadChildren: () => import('./new-recipe/new-recipe.module').then( m => m.NewRecipePageModule),
+    canActivate: [AuthGuard]
   },
 ];
 

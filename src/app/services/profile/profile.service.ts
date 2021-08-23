@@ -20,7 +20,7 @@ export class ProfileService {
         const body = new FormData();
         const data = { firstName: firstname, lastName: lastname, email };
         body.append('data', JSON.stringify(data));
-        body.append('userImage', file);
+        body.append('image', file);
         return this.http.put(this.baseURL + 'update-data', body);
     }
 
