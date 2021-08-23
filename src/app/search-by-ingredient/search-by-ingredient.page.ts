@@ -14,29 +14,16 @@ import { UserPopOverComponent } from '../user-pop-over/user-pop-over.component';
 })
 export class SearchByIngredientPage implements OnInit {
 
-    name = "";
     ing = "";
     amount = 0;
 
     ingredients = [];
     recipes = [];
 
-    constructor(public router: Router, public authService: AuthService, public profileService: ProfileService, public recipeService: RecipesService, public cartService: CartService, public toastController: ToastController, public popoverController: PopoverController) {
-        profileService.getProfileData().pipe().subscribe(result => {
-            console.log(result.data.data);
-            this.name = result.data.data.firstName + " " + result.data.data.lastName;
-        });
+    constructor(public router: Router, public authService: AuthService, public profileService: ProfileService, public recipeService: RecipesService, public cartService: CartService, public toastController: ToastController) {
     }
 
     ngOnInit(): void {
-    }
-
-    goToLogin() {
-        this.router.navigate(['/login']);
-    }
-
-    goToPage(page: string) {
-        this.router.navigate(['' + page + '']);
     }
 
     addItem() {
@@ -59,14 +46,6 @@ export class SearchByIngredientPage implements OnInit {
             console.log(this.recipes);
         });
     }
-
-    async popclick(event: any) {
-        const popover = await this.popoverController.create({
-          component: UserPopOverComponent,
-          event
-        });
-        return await popover.present();
-      }
 
     addToCart(items: any) {
         this.cartService.addToCart(items).pipe().subscribe(async result => {

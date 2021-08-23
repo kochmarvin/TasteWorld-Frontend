@@ -46,6 +46,15 @@ export class AuthService {
         this.router.navigate(['/home']);
     }
 
+    public register(email: string, firstname: string, lastname: string, password: string) {
+        return this.http.post(this.baseURL + 'register', {
+            email: email,
+            lastName: lastname,
+            firstName: firstname,
+            password: password,
+        });
+    }
+
     public checkAuthenticated(): Observable<any> {
         return this.http.get(this.baseURL + 'is-authenticated');
     }

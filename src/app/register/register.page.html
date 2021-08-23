@@ -1,43 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="">
-      <ion-button (click)="goToPage('home')">
-        <ion-icon slot="start" name="home-outline"></ion-icon>
-        Startseite
-      </ion-button>
-      <ion-button (click)="goToPage('search-by-name')">
-        <ion-icon slot="start" name="fast-food-outline"></ion-icon>
-        Nach Name suchen
-      </ion-button>
-      <ion-button (click)="goToPage('search-by-ingredient')">
-        <ion-icon slot="start" name="pizza-outline"></ion-icon>
-        Nach Zutat suchen
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end" [hidden]="!authService.isAuthorized">
-      <ion-button (click)="popclick($event)">
-        {{ name }}
-        <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end" [hidden]="authService.isAuthorized">
-      <ion-button (click)="goToLogin()">
-        Login
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="back-container">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          
-        </ion-col>
-      </ion-row>
+    <ion-grid class="grid-margin">
+      <form [formGroup]="registerForm" (ngSubmit)="register($event)">
+        <ion-row>
+          <ion-col size-xl="8" offset-xl="2">
+            <h1 style="text-align: center; margin-top: 66px;">Register</h1>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size-xl="8" offset-xl="2">
+            <ion-item class="white-background">
+              <ion-label position="floating">E-Mail</ion-label>
+              <ion-input type="email" formControlName="email" placeholder="your@email.com"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size-xl="8" offset-xl="2">
+            <ion-item class="white-background">
+              <ion-label position="floating">Vorname</ion-label>
+              <ion-input formControlName="firstname" placeholder="Max"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size-xl="8" offset-xl="2">
+            <ion-item class="white-background">
+              <ion-label position="floating">Nachname</ion-label>
+              <ion-input formControlName="lastname" placeholder="Mustermann"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col size-xl="8" offset-xl="2">
+            <ion-item class="white-background">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="Password" formControlName="password" placeholder="your password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col size-xl="8" offset-xl="2">
+            <ion-item class="white-background">
+              <ion-label position="floating">Password bestätigen</ion-label>
+              <ion-input type="Password" formControlName="passwordCheck" placeholder="your password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-margin-bottom">
+          <ion-col size-xl="8" offset-xl="2">
+            <ion-button expand="block" color="purple" [disabled]="!registerForm.valid" type="submit">
+              Registrieren
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
     </ion-grid>
   </div>
 </ion-content>

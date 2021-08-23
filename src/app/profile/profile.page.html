@@ -1,35 +1,3 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="">
-        <ion-button (click)="goToPage('home')">
-          <ion-icon slot="start" name="home-outline"></ion-icon>
-          Startseite
-        </ion-button>
-        <ion-button (click)="goToPage('search-by-name')">
-          <ion-icon slot="start" name="fast-food-outline"></ion-icon>
-          Nach Name suchen
-        </ion-button>
-        <ion-button (click)="goToPage('search-by-ingredient')">
-          <ion-icon slot="start" name="pizza-outline"></ion-icon>
-          Nach Zutat suchen
-        </ion-button>
-      </ion-buttons>
-  
-      <ion-buttons slot="end" [hidden]="!authService.isAuthorized">
-        <ion-button (click)="popclick($event)">
-          {{ name }}
-          <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-  
-      <ion-buttons slot="end" [hidden]="authService.isAuthorized">
-        <ion-button (click)="goToLogin()">
-          Login
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
 <ion-content>
     <div class="back-container">
         <div class="profile-picture-container">

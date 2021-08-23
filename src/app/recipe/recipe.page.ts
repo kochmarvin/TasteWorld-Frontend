@@ -16,14 +16,8 @@ export class RecipePage implements OnInit {
     recipe = {
 
     };
-    name = "";
 
     constructor(public popoverController: PopoverController, public authService: AuthService, public profileService: ProfileService, public router: Router, public recipeService: RecipesService, private route: ActivatedRoute) {
-
-        profileService.getProfileData().pipe().subscribe(result => {
-            this.name = result.data.data.firstName + " " + result.data.data.lastName;
-        });
-
         recipeService.getRecipeById(route.snapshot.paramMap.get('id')).pipe().subscribe(result => {
             this.recipe = result.data.recipe;
             console.log(this.recipe);
@@ -43,13 +37,5 @@ export class RecipePage implements OnInit {
 
     goToCreatorRecipes(id: string) {
         this.router.navigate(['/user-recipes/' + id]);
-    }
-
-    goToLogin() {
-        this.router.navigate(['/login']);
-    }
-
-    goToPage(page: string) {
-        this.router.navigate(['' + page + '']);
     }
 }
