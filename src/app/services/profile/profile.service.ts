@@ -4,25 +4,25 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ProfileService {
 
-  private baseURL = "http://localhost:3000/profile/";
-  
-  constructor(private http: HttpClient, private router: Router) { }
+    private baseURL = 'http://localhost:3000/profile/';
 
-  public getProfileData(): Observable<any> {
-    return this.http.get(this.baseURL + "personal-data");
-  }
+    constructor(private http: HttpClient, private router: Router) { }
 
-  public updatePersonalInformationData(firstname: any, lastname: any, email: any, file: any): Observable<any> {
-    let body = new FormData();
-    let data = { firstName: firstname, lastName: lastname, email: email};
-    body.append('data', JSON.stringify(data))
-    body.append('userImage', file);
-    return this.http.put(this.baseURL + "update-data", body);
-  }
+    public getProfileData(): Observable<any> {
+        return this.http.get(this.baseURL + 'personal-data');
+    }
+
+    public updatePersonalInformationData(firstname: any, lastname: any, email: any, file: any): Observable<any> {
+        const body = new FormData();
+        const data = { firstName: firstname, lastName: lastname, email };
+        body.append('data', JSON.stringify(data));
+        body.append('userImage', file);
+        return this.http.put(this.baseURL + 'update-data', body);
+    }
 
 
 }

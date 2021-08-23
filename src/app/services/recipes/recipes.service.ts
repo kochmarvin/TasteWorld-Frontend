@@ -4,28 +4,28 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RecipesService {
 
-  private baseURL = "http://localhost:3000/recipes/";
-  
-  constructor(private http: HttpClient, private router: Router) { }
+    private baseURL = 'http://localhost:3000/recipes/';
 
-  public getRecipesByName(name: string): Observable<any> {
-    return this.http.post(this.baseURL + "find-by-name", { name: name });
-  }
+    constructor(private http: HttpClient, private router: Router) { }
 
-  public getRecipesByIngredients(ingredients: any): Observable<any> {
-    return this.http.post(this.baseURL + "find-by-ingredients", { ingredients: ingredients });
-  }
+    public getRecipesByName(name: string): Observable<any> {
+        return this.http.post(this.baseURL + 'find-by-name', { name });
+    }
 
-  public getRecipesOfUser(id: string): Observable<any> {
-    return this.http.get(this.baseURL + "get-user-recipes/" + id);
-  }
+    public getRecipesByIngredients(ingredients: any): Observable<any> {
+        return this.http.post(this.baseURL + 'find-by-ingredients', { ingredients });
+    }
 
-  public getRecipeById(id: string): Observable<any> {
-    return this.http.get(this.baseURL + id);
-  }
+    public getRecipesOfUser(id: string): Observable<any> {
+        return this.http.get(this.baseURL + 'get-user-recipes/' + id);
+    }
+
+    public getRecipeById(id: string): Observable<any> {
+        return this.http.get(this.baseURL + id);
+    }
 
 }

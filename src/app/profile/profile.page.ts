@@ -16,7 +16,7 @@ export class ProfilePage implements OnInit {
 	personalInformationForm: FormGroup;
 	selectedFile = null;
 	selectedFileURL = null;
-	picture = "";
+	picture = '';
 
 	constructor(public authService: AuthService, public profileService: ProfileService, public router: Router, private fb: FormBuilder, public toastController: ToastController) {
 
@@ -28,9 +28,9 @@ export class ProfilePage implements OnInit {
 		});
 
 		this.personalInformationForm = fb.group({
-			firstname: ["", Validators.required],
-			lastname: ["", Validators.required],
-			email: ["", Validators.required],
+			firstname: ['', Validators.required],
+			lastname: ['', Validators.required],
+			email: ['', Validators.required],
 		});
 
 	}

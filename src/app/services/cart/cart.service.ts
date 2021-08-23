@@ -4,29 +4,29 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CartService {
 
-  private baseURL = "http://localhost:3000/cart/";
-  
-  constructor(private http: HttpClient, private router: Router) { }
+    private baseURL = 'http://localhost:3000/cart/';
 
-  public getCart(): Observable<any> {
-    return this.http.get(this.baseURL + "get-cart");
-  }
+    constructor(private http: HttpClient, private router: Router) { }
 
-  public addToCart(items: any): Observable<any> {
-    return this.http.post(this.baseURL + "add-to-cart", { items: items });
-  }
+    public getCart(): Observable<any> {
+        return this.http.get(this.baseURL + 'get-cart');
+    }
 
-  public deleteItem(items: any): Observable<any> {
-    return this.http.post(this.baseURL + "delete-item", { items: items });
-  }
+    public addToCart(items: any): Observable<any> {
+        return this.http.post(this.baseURL + 'add-to-cart', { items });
+    }
 
-  public clearCart(): Observable<any> {
-    return this.http.get(this.baseURL + "clear-cart");
-  }
+    public deleteItem(items: any): Observable<any> {
+        return this.http.post(this.baseURL + 'delete-item', { items });
+    }
+
+    public clearCart(): Observable<any> {
+        return this.http.get(this.baseURL + 'clear-cart');
+    }
 }
 
 

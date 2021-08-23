@@ -12,7 +12,7 @@ import { UserPopOverComponent } from '../user-pop-over/user-pop-over.component';
     styleUrls: ['./recipe.page.scss'],
 })
 export class RecipePage implements OnInit {
-    
+
     recipe = {
 
     };

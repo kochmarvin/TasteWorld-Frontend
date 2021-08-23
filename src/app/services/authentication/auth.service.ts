@@ -10,14 +10,14 @@ export class AuthService {
 
     public isAuthorized = false;
 
-    private baseURL = "http://localhost:3000/auth/";
+    private baseURL = 'http://localhost:3000/auth/';
     private madRequest: Promise<boolean>;
     private madeRequestStatic: boolean;
 
     constructor(private http: HttpClient, private router: Router) {
         this.madRequest = new Promise((res, rej) => {
             http
-                .get(this.baseURL + "is-authenticated")
+                .get(this.baseURL + 'is-authenticated')
                 .pipe()
                 .subscribe((auth) => {
                     // @ts-ignore
@@ -34,24 +34,24 @@ export class AuthService {
     }
 
     public login(email: string, password: string): Observable<any> {
-        return this.http.post(this.baseURL + "login", {
-            email: email,
-            password: password,
+        return this.http.post(this.baseURL + 'login', {
+            email,
+            password,
         });
     }
 
     public logout(): void {
         this.isAuthorized = false;
-        localStorage.removeItem("id_token");
+        localStorage.removeItem('id_token');
         this.router.navigate(['/home']);
     }
 
     public register(email: string, firstname: string, lastname: string, password: string) {
         return this.http.post(this.baseURL + 'register', {
-            email: email,
+            email,
             lastName: lastname,
             firstName: firstname,
-            password: password,
+            password,
         });
     }
 
@@ -68,7 +68,7 @@ export class AuthService {
             return new Promise((res, rej) => {
                 this.madRequest.then(data => {
                     res(this.isAuthorized);
-                })
+                });
             });
         }
     }

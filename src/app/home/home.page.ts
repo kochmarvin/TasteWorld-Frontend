@@ -23,7 +23,7 @@ export class HomePage {
 
     remove(item: any, i: number) {
         this.cart.splice(i, 1);
-        let a = [];
+        const a = [];
         a.push(item);
         this.cartService.deleteItem(a).pipe().subscribe(async result => {
             if (result.data) {

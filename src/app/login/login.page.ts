@@ -21,8 +21,8 @@ export class LoginPage implements OnInit {
 		});
 
 		this.loginForm = fb.group({
-			email: ["", Validators.required],
-			password: ["", Validators.required],
+			email: ['', Validators.required],
+			password: ['', Validators.required],
 		});
 
 	}
@@ -45,16 +45,12 @@ export class LoginPage implements OnInit {
 					this.authService.isAuthorized = true;
 					this.router.navigate(['/profile']);
 				} else {
-
 					const toast = await this.toastController.create({
 						message: data.error.error_message,
 						duration: 2000
 					});
 					toast.present();
-
 				}
 			});
 	}
-
-
 }

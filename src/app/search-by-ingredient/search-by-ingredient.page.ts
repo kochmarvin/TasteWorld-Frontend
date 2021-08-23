@@ -14,7 +14,7 @@ import { UserPopOverComponent } from '../user-pop-over/user-pop-over.component';
 })
 export class SearchByIngredientPage implements OnInit {
 
-    ing = "";
+    ing = '';
     amount = 0;
 
     ingredients = [];
@@ -32,7 +32,7 @@ export class SearchByIngredientPage implements OnInit {
             amount: this.amount.toString(),
             unit: 'g'
         });
-        this.ing = "";
+        this.ing = '';
         this.amount = 0;
     }
 

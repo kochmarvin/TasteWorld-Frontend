@@ -1,0 +1,9 @@
+node_modules
+build
+package-lock.json
+package.json
+templates
+theme
+assets
+environments
+e2e
