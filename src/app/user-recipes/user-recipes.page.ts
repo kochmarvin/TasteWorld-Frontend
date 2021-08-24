@@ -34,4 +34,8 @@ export class UserRecipesPage implements OnInit {
     goToCreatorRecipes(id: string) {
         this.router.navigate(['/user-recipes/' + id]);
     }
+
+    goToPage(page: string) {
+        this.router.navigate(['' + page + '']);
+    }
 }

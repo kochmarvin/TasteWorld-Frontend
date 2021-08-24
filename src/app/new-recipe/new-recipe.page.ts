@@ -44,26 +44,26 @@ export class NewRecipePage implements OnInit {
 
     create(event: any) {
         this.recipeService.createRecipe(
-            this.recipeForm.controls.name.value, 
-            this.recipeForm.controls.preperation.value, 
-            this.ingredients, 
-            this.recipeForm.controls.persons.value, 
-            this.recipeForm.controls.duration.value, 
+            this.recipeForm.controls.name.value,
+            this.recipeForm.controls.preperation.value,
+            this.ingredients,
+            this.recipeForm.controls.persons.value,
+            this.recipeForm.controls.duration.value,
             undefined).pipe().subscribe(async result => {
                 // @ts-ignore
-				if (result.data) {
+                if (result.data) {
                     const toast = await this.toastController.create({
-						message: result.data.message,
-						duration: 2000
-					});
-					toast.present();
-				} else {
-					const toast = await this.toastController.create({
-						message: result.error.error_message,
-						duration: 2000
-					});
-					toast.present();
-				}
+                        message: result.data.message,
+                        duration: 2000
+                    });
+                    toast.present();
+                } else {
+                    const toast = await this.toastController.create({
+                        message: result.error.error_message,
+                        duration: 2000
+                    });
+                    toast.present();
+                }
             });
     }
 }
